@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:skip="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:controls="clr-namespace:ChallengeMk2.Controls"
+			 xmlns:prism="http://prismlibrary.com"
+			 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+			 prism:ViewModelLocator.AutowireViewModel="True"
+             mc:Ignorable="skip"
+             x:Class="ChallengeMk2.Views.SystemDetailCarouselPage"
+			 NavigationPage.HasBackButton="False">
+
+	<StackLayout Orientation="Vertical" Padding="20,0,20,0">
+		<!--BACKBUTTON-->
+		<ImageButton BackgroundColor="transparent" BorderColor="Transparent"
+					 HorizontalOptions="Start" VerticalOptions="Start"
+					 HeightRequest="20"
+					 WidthRequest="20"
+					 Command="{prism:GoBack}">
+			<ImageButton.Source>
+				<FontImageSource Glyph="{StaticResource Back}" FontFamily="fas" Size="20" Color="{DynamicResource MainTextColor}"/>
+			</ImageButton.Source>
+		</ImageButton>
+		<!--CONTENT-->
+		<StackLayout Orientation="Vertical" 
+					 HorizontalOptions="CenterAndExpand"
+					 Spacing="10">
+
+			<ffimageloadingsvg:SvgCachedImage HeightRequest="50"
+											  WidthRequest="50"
+											  Source="{Binding CurrentSystem.PrimaryStar.Type, Converter={StaticResource starIconConverter}}"
+											  sharedTransitions:Transition.Name="StarTypeIcon"/>
+
+			<Label Text="{Binding CurrentSystem.Name}" TextColor="{DynamicResource MainTextColor}"
+				   FontSize="Large"
+				   HorizontalTextAlignment="Center"
+				   sharedTransitions:Transition.Name="ItemName"/>
+
+			<yummy:PancakeView CornerRadius="22"
+							   Padding="20"
+							   Margin="0,10,0,40"
+							   HorizontalOptions="Center"
+							   WidthRequest="300"
+							   sharedTransitions:Transition.Name="ItemPanel"
+							   BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+
+				<yummy:PancakeView.BackgroundGradientStops>
+					<yummy:GradientStopCollection>
+						<yummy:GradientStop Color="{StaticResource CardColor1}" Offset="0" />
+						<yummy:GradientStop Color="{StaticResource CardColor2}" Offset="1" />
+					</yummy:GradientStopCollection>
+				</yummy:PancakeView.BackgroundGradientStops>
+
+				<yummy:PancakeView.Shadow>
+					<yummy:DropShadow Color="#000000" Offset="20,20" BlurRadius="5" Opacity="0.6"/>
+				</yummy:PancakeView.Shadow>
+
+				<ScrollView VerticalScrollBarVisibility="Never">
+					<StackLayout Orientation="Vertical" Spacing="0" Padding="0">
+
+						<!--STARTYPE-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Star type"
+														 ValueLabelText="{Binding CurrentSystem.PrimaryStar.Type}"
+														 GlyphIconGlyph="{StaticResource Star}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource StarTypeColor}"
+														 GlyphIconColor="{DynamicResource StarTypeColor}"/>
+						
+						<!--SCOOPABLE STAR-->
+						<StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+							<StackLayout Orientation="Vertical">
+								<Label Text="Scoopable star?"
+									   FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource DetailTextColor}"
+									   HorizontalTextAlignment="End"/>
+								<CheckBox IsChecked="{Binding CurrentSystem.PrimaryStar.IsScoopable}"
+										  IsEnabled="False"
+										  HorizontalOptions="End" VerticalOptions="Start" Color="{DynamicResource ScoopableColor}"/>
+							</StackLayout>
+							<Image>
+								<Image.Source>
+									<FontImageSource Glyph="{StaticResource Scoop}" FontFamily="fas" Size="30"
+													 Color="{DynamicResource ScoopableColor}"/>
+								</Image.Source>
+							</Image>
+						</StackLayout>
+
+						<!--DISTANCE-->
+						<StackLayout Orientation="Horizontal">
+							<Image HorizontalOptions="Start" sharedTransitions:Transition.Name="DistanceIcon">
+								<Image.Source>
+									<FontImageSource Glyph="{StaticResource Rocket}" FontFamily="fas" Size="30"
+													 Color="{DynamicResource DistanceColor}"/>
+								</Image.Source>
+							</Image>
+							<StackLayout Orientation="Vertical">
+								<Label Text="Distance"
+									   FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource DetailTextColor}"/>
+								<Label Text="{Binding CurrentSystem.Distance, StringFormat='{0} ly'}"
+									   FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource DistanceColor}"
+									   sharedTransitions:Transition.Name="DistanceText"/>
+							</StackLayout>
+						</StackLayout>
+
+						<!--POPULATION-->
+						<StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+							<StackLayout Orientation="Vertical">
+								<Label Text="Population"
+									   FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource DetailTextColor}"
+									   HorizontalTextAlignment="End"/>
+								<Label Text="{Binding CurrentSystem.Information.Population}"
+									   FontSize="12" FontAttributes="Bold" TextColor="{DynamicResource PopulationColor}"
+									   HorizontalTextAlignment="End"
+									   sharedTransitions:Transition.Name="PopulationText"/>
+							</StackLayout>
+							<Image sharedTransitions:Transition.Name="PopulationIcon">
+								<Image.Source>
+									<FontImageSource Glyph="{StaticResource People}" FontFamily="fas" Size="30"
+													 Color="{DynamicResource PopulationColor}"/>
+								</Image.Source>
+							</Image>
+						</StackLayout>
+
+						<!--PERMIT-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="System permit"
+														 ValueLabelText="{Binding CurrentSystem.PermitName, Converter={StaticResource nullStringConverter}}"
+														 GlyphIconGlyph="{StaticResource Lock}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource PermitColor}"
+														 GlyphIconColor="{DynamicResource PermitColor}"/>
+
+						<!--BODIES-->
+						<controls:GlyphIconStatAlignRight TitleLabelText="System bodies"
+														  ValueLabelText="{Binding CurrentSystem.BodyCount}"
+														  GlyphIconGlyph="{StaticResource Bodies}"
+														  TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														  ValueLabelTextColor="{DynamicResource BodiesColor}"
+														  GlyphIconColor="{DynamicResource BodiesColor}"/>
+
+						<!--ALLEGIANCE-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Allegiance"
+														 ValueLabelText="{Binding CurrentSystem.Information.Allegiance, Converter={StaticResource nullStringConverter}}"
+														 GlyphIconGlyph="{StaticResource Hands}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource AllegianceColor}"
+														 GlyphIconColor="{DynamicResource AllegianceColor}"/>
+
+						<!--GOVERNMENT-->
+						<controls:GlyphIconStatAlignRight TitleLabelText="Government"
+														  ValueLabelText="{Binding CurrentSystem.Information.Government, Converter={StaticResource nullStringConverter}}"
+														  GlyphIconGlyph="{StaticResource Government}"
+														  TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														  ValueLabelTextColor="{DynamicResource GovernmentColor}"
+														  GlyphIconColor="{DynamicResource GovernmentColor}"/>
+
+						<!--FACTION-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Faction"
+														 ValueLabelText="{Binding CurrentSystem.Information.Faction, Converter={StaticResource nullStringConverter}}"
+														 GlyphIconGlyph="{StaticResource Faction}"
+														 GlyphIconFontFamily="fab"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource FactionColor}"
+														 GlyphIconColor="{DynamicResource FactionColor}"/>
+
+						<!--FACTION STATE-->
+						<controls:GlyphIconStatAlignRight TitleLabelText="Faction state"
+														  ValueLabelText="{Binding CurrentSystem.Information.FactionState, Converter={StaticResource nullStringConverter}}"
+														  GlyphIconGlyph="{StaticResource State}"
+														  TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														  ValueLabelTextColor="{DynamicResource FactionStateColor}"
+														  GlyphIconColor="{DynamicResource FactionStateColor}"/>
+
+						<!--ECONOMY-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Economy"
+														 ValueLabelText="{Binding CurrentSystem.Information.Economy, Converter={StaticResource nullStringConverter}}"
+														 GlyphIconGlyph="{StaticResource Economy}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource EconomyColor}"
+														 GlyphIconColor="{DynamicResource EconomyColor}"/>
+
+						<!--SECOND ECONOMY-->
+						<controls:GlyphIconStatAlignRight TitleLabelText="Second economy"
+														  ValueLabelText="{Binding CurrentSystem.Information.SecondEconomy, Converter={StaticResource nullStringConverter}}"
+														  GlyphIconGlyph="{StaticResource Economy2}"
+														  TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														  ValueLabelTextColor="{DynamicResource SecondEconomyColor}"
+														  GlyphIconColor="{DynamicResource SecondEconomyColor}"/>
+
+						<!--SECURITY-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Security"
+														 ValueLabelText="{Binding CurrentSystem.Information.Security, Converter={StaticResource nullStringConverter}}"
+														 GlyphIconGlyph="{StaticResource Security}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource SecurityColor}"
+														 GlyphIconColor="{DynamicResource SecurityColor}"/>
+
+						<!--RESERVE-->
+						<controls:GlyphIconStatAlignRight TitleLabelText="Reserve"
+														  ValueLabelText="{Binding CurrentSystem.Information.Reserve, Converter={StaticResource nullStringConverter}}"
+														  GlyphIconGlyph="{StaticResource Parts}"
+														  TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														  ValueLabelTextColor="{DynamicResource ReserveColor}"
+														  GlyphIconColor="{DynamicResource ReserveColor}"/>
+
+						<!--COORDS-->
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Coords X"
+														 ValueLabelText="{Binding CurrentSystem.Coords.X}"
+														 GlyphIconGlyph="{StaticResource Cubes}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource CoordsColor}"
+														 GlyphIconColor="{DynamicResource CoordsColor}"/>
+
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Coords Y"
+														 ValueLabelText="{Binding CurrentSystem.Coords.Y}"
+														 GlyphIconGlyph="{StaticResource Cubes}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource CoordsColor}"
+														 GlyphIconColor="{DynamicResource CoordsColor}"
+														 Margin="0,20,0,0"/>
+
+						<controls:GlyphIconStatAlignLeft TitleLabelText="Coords Z"
+														 ValueLabelText="{Binding CurrentSystem.Coords.Z}"
+														 GlyphIconGlyph="{StaticResource Cubes}"
+														 TitleLabelTextColor="{DynamicResource DetailTextColor}"
+														 ValueLabelTextColor="{DynamicResource CoordsColor}"
+														 GlyphIconColor="{DynamicResource CoordsColor}"
+														 Margin="0,20,0,0"/>
+
+					</StackLayout>
+				</ScrollView>
+
+			</yummy:PancakeView>
+
+		</StackLayout>
+		
+	</StackLayout>
+</ContentPage>

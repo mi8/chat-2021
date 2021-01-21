@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:ChallengeMk2.Views"
+			xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+            x:Class="ChallengeMk2.Views.MainTabbedPage"
+			android:TabbedPage.ToolbarPlacement="Bottom"
+			NavigationPage.HasNavigationBar="True"
+			BarBackgroundColor="Transparent"
+			UnselectedTabColor="{DynamicResource TextForegroundColor}"
+			SelectedTabColor="{DynamicResource AccentDeepColor}">
+
+	<TabbedPage.Background>
+		<LinearGradientBrush StartPoint="0,0"
+                             EndPoint="0,1">
+			<GradientStop Color="{StaticResource PageBackgroundColor1}"
+                          Offset="0.0"/>
+			<GradientStop Color="{StaticResource PageBackgroundColor3}"
+                          Offset="1.0"/>
+		</LinearGradientBrush>
+	</TabbedPage.Background>
+
+	<TabbedPage.Children>
+		<sharedTransitions:SharedTransitionNavigationPage Title=""
+														  TransitionStarted="SharedTransitionNavigationPage_OnTransitionStarted"
+                                                          TransitionEnded="SharedTransitionNavigationPage_OnTransitionEnded"
+                                                          TransitionCancelled="SharedTransitionNavigationPage_OnTransitionCancelled">
+			<x:Arguments>
+				<views:StarSystemsPage/>
+			</x:Arguments>
+
+			<sharedTransitions:SharedTransitionNavigationPage.IconImageSource>
+				<FontImageSource Glyph="{StaticResource Planet}" FontFamily="fas"/>
+			</sharedTransitions:SharedTransitionNavigationPage.IconImageSource>
+		</sharedTransitions:SharedTransitionNavigationPage>
+
+		<NavigationPage Title="">
+			<x:Arguments>
+				<views:PuzzlePage/>
+			</x:Arguments>
+
+			<NavigationPage.IconImageSource>
+				<FontImageSource Glyph="{StaticResource Dice}" FontFamily="fas"/>
+			</NavigationPage.IconImageSource>
+		</NavigationPage>
+		
+		<NavigationPage Title="">
+			<!--<x:Arguments>
+				<views:ChatMainPage/>
+			</x:Arguments>-->
+			<x:Arguments>
+				<views:ChatLoginPage/>
+			</x:Arguments>
+
+			<NavigationPage.IconImageSource>
+				<FontImageSource Glyph="{StaticResource Chat}" FontFamily="fas"/>
+			</NavigationPage.IconImageSource>
+		</NavigationPage>
+
+		<NavigationPage Title="">
+			<x:Arguments>
+				<views:AboutPage/>
+			</x:Arguments>
+
+			<NavigationPage.IconImageSource>
+				<FontImageSource Glyph="{StaticResource Info}" FontFamily="fas"/>
+			</NavigationPage.IconImageSource>
+		</NavigationPage>
+	</TabbedPage.Children>
+
+</TabbedPage>
