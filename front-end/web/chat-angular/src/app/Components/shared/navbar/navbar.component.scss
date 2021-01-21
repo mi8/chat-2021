@@ -1,0 +1,90 @@
+nav {
+  &.navbar {
+    padding: 0;
+    height: 60px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    background-color: #04b2fd;
+
+    .container-fluid {
+      height: 100%;
+      padding-left: 0;
+    }
+
+    .navbar-brand {
+      background-color: #005796;
+      height: 100%;
+      width: 250px;
+      padding: 10px 10px;
+      padding-top: 13px;
+      color: #FFF;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bolder;
+      overflow: hidden;
+
+      .chat-logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: 100%;
+        width: 100%;
+      }
+
+      .chat-logo {
+        font-size: 40px;
+        color: white;
+      }
+    }
+
+    div {
+      .navbar-toggler {
+        margin-right: 5px;
+      }
+
+      .navbar-toggler .navbar-toggler-icon fa-icon{
+        color: #fff;
+        font-size: 28px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.nav-link {
+  margin: 0 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #005796;
+  }
+}
+
+.active {
+  background-color: rgba(0,0,255,0.2);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  nav.navbar div .navbar-brand {
+    background-color: #04b2fd;
+    width: 150px;
+    padding: 10px 10px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

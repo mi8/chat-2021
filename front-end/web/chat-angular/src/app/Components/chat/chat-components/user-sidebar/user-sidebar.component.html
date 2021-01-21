@@ -1,0 +1,23 @@
+<!-- Contact -->
+<div class="sidebar-heading">
+  <button class="btn btn-primary"
+          (click)="showContactModal()">
+    <fa-icon [icon]="faUserPlus" style="color: white;"></fa-icon>
+  </button>
+</div>
+<div class="list-group list-group-flush" *ngFor="let contact of user?.contacts">
+  <a class="list-group-item list-group-item-action" (click)="onCurrentContactChange(contact)">
+    <span>{{contact.contactName}}</span></a>
+</div>
+
+<!-- Room -->
+<div class="sidebar-heading">
+  <button class="btn btn-primary"
+          (click)="showRoomModal()">
+    <fa-icon [icon]="faUserPlus" style="color: white;"></fa-icon>
+  </button>
+</div>
+<div class="list-group list-group-flush" *ngFor="let room of user?.rooms">
+  <a class="list-group-item list-group-item-action" (click)="onCurrentRoomChange(room)">
+    <span>{{room.roomName}}</span></a>
+</div>

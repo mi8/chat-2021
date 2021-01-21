@@ -1,0 +1,35 @@
+<nav class="navbar navbar-primary static-top navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <div class="chat-logo-wrapper">
+        <span class="chat-logo"><fa-icon [icon]="faCommentAlt"></fa-icon></span>
+        <h3> Chat</h3>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <fa-icon [icon]="faBars"></fa-icon>
+        </span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link scroll-link" *ngIf="!loggedIn" href="#join">Join Now</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link scroll-link" *ngIf="!loggedIn" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"
+                  (click)="showProfileModal()"
+                  *ngIf="loggedUser">
+                  <span><fa-icon [icon]="faUserCircle" style="color: white;"></fa-icon></span> Hello, {{loggedUser.username}} !
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="loggedIn" (click)="logout()">Logout</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>

@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary static-top">
+  <div class="container ">
+    <a class="navbar-brand" href="#">
+      <fa-icon [icon]="faCommentAlt" style="color: white;"></fa-icon>
+    </a>
+    <div class="float-center">
+      <h3>Hello {{loggedUser.username}} !</h3>
+    </div>
+    <div class="float-right">
+      <button class="btn btn-default"
+              (click)="showProfileModal()"
+              *ngIf="loggedUser">
+        <fa-icon [icon]="faUserCircle" style="color: white;"></fa-icon>
+      </button>
+    </div>
+    <div class="float-right">
+      <button class="btn btn-danger"
+              (click)="logout()"
+              *ngIf="loggedUser">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- /#sidebar-wrapper -->
+<div class="d-flex" id="wrapper">
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <app-user-sidebar [user]="user"
+      (contactEvent)="contactEventHandler($event)"
+      (roomEvent)="roomEventHandler($event)">
+    </app-user-sidebar>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <app-chat-inbox [user]="user"
+      [currentContact]="currentContact"
+      [currentRoom]="currentRoom">
+    </app-chat-inbox>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="modal-header bg-primary text-white">
+    <h4 class="modal-title">Chat Users</h4>
+    <button type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="list-group list-group-flush" *ngFor="let user of users">
+      <a class="list-group-item list-group-item-action" (click)="onAddContact(user)">
+        <span>{{user.username}}</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+<!-- Chat Selection -->
+<div class="d-flex">
+  <button class="btn btn-primary" (click)="mapInboxType('public')">
+    Public
+  </button>
+  <button class="btn btn-primary" (click)="mapInboxType('group')">
+    Group
+  </button>
+  <button class="btn btn-primary" (click)="mapInboxType('private')">
+    Private
+  </button>
+</div>
+
+
+<!-- Public Chat -->
+<div class="container-fluid my-4" *ngIf="isPublic">
+  <div class="card" style="height: 500px">
+    <div class=" card card-header">
+      <h3 class="mt-4">Public chat</h3>
+    </div>
+
+    <div class="card card-body">
+      <ul>
+        <!-- <li *ngFor="let mObj of msgList" [ngClass]="mObj.Username === msg.Username ? 'in-msg' : 'ex-msg'">{{mObj.Username}} :<br /><span class="msg-italic-style">{{mObj.Content}}</span></li> -->
+        <li *ngFor="let message of publicMessages">
+          {{message.senderName}} : {{message.content}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="card card-footer">
+      <form [formGroup]="messageInput" #f="ngForm" (ngSubmit)="onSubmitPublicMessage()">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text"
+                   class="form-control"
+                   id="Message"
+                   [(ngModel)]="msg.content"
+                   formControlName="Message"
+                   name="Message"
+                   required
+                   placeholder="Type message here..."
+                   autocomplete="off">
+            <div class="input-group-append">
+              <button class="btn btn-primary"
+                      type="submit"
+                      [disabled]="!f.valid">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Group Chat -->
+<div class="container-fluid my-4" *ngIf="isGroup">
+  <div class="card" style="height: 500px">
+    <div class=" card card-header">
+      <h3 class="mt-4">Group name : {{this.selectedRoom?.roomName}}</h3>
+    </div>
+
+    <div class="card card-body">
+      <ul>
+        <!-- <li *ngFor="let mObj of msgList" [ngClass]="mObj.Username === msg.Username ? 'in-msg' : 'ex-msg'">{{mObj.Username}} :<br /><span class="msg-italic-style">{{mObj.Content}}</span></li> -->
+        <li *ngFor="let message of groupMessages">
+          {{message.senderName}} : {{message.content}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="card card-footer">
+      <form [formGroup]="messageInput" #f="ngForm" (ngSubmit)="onSubmitGroupMessage()">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text"
+                   class="form-control"
+                   id="Message"
+                   [(ngModel)]="msg.content"
+                   formControlName="Message"
+                   name="Message"
+                   required
+                   placeholder="Type message here..."
+                   autocomplete="off">
+            <div class="input-group-append">
+              <button class="btn btn-primary"
+                      type="submit"
+                      [disabled]="!f.valid">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Private Chat -->
+<div class="container-fluid my-4" *ngIf="isPrivate">
+  <div class="card" style="height: 500px">
+    <div class=" card card-header">
+      <h3 class="mt-4">Chatting with : {{this.selectedContact?.contactName}}</h3>
+    </div>
+
+    <div class="card card-body">
+      <ul>
+        <li *ngFor="let message of contactMessages">
+          {{message.senderName}} : {{message.content}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="card card-footer">
+      <form [formGroup]="messageInput" #f="ngForm" (ngSubmit)="onSubmitPrivateMessage()">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text"
+                   class="form-control"
+                   id="Message"
+                   [(ngModel)]="msg.content"
+                   formControlName="Message"
+                   name="Message"
+                   required
+                   placeholder="Type message here..."
+                   autocomplete="off">
+            <div class="input-group-append">
+              <button class="btn btn-primary"
+                      type="submit"
+                      [disabled]="!f.valid">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
