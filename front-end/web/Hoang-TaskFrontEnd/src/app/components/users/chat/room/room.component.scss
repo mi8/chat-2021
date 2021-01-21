@@ -1,0 +1,351 @@
+$leftrightwidth: 20vw;
+$middlewidth: 50vw;
+$topheight: 10vh;
+$middleheight: 66.5vh;
+$bottomheight: 7vh;
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  background-image: -webkit-linear-gradient(
+    30deg,
+    #013a6b 33%,
+    #004e95 33%,
+    #004e95 66%,
+    #54c4c8 66%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    height: 90vh;
+  }
+
+  .headNav {
+    height: 5vh;
+    background-color: #586c8e;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      font-size: 30px;
+      margin-left: 40px;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .board {
+    display: flex;
+    height: 85vh;
+
+    .leftside {
+      background-color: white;
+      min-width: 300px;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+
+      .top {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: #d3d3d3;
+        height: $topheight;
+
+        h3 {
+          height: 10.8vh;
+          padding: 40px 0px;
+        }
+      }
+      .input {
+        align-self: center;
+
+        .search {
+          min-width: 250px;
+          max-width: 250px;
+        }
+      }
+
+      .rooms {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: hidden;
+        overflow-y: auto;
+        max-height: 55.5vh;
+        h4 {
+          align-self: center;
+          margin: 30px 0;
+        }
+
+        .room {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+
+          &:hover {
+            background-color: rgba(50, 115, 220, 0.6);
+            cursor: pointer;
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          .icon {
+            font-size: 30px;
+          }
+
+          h5 {
+            margin: 0 0 0 10px;
+          }
+        }
+      }
+
+      .exit {
+        min-width: 300px;
+        max-width: 300px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgrey;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .middleSide {
+      width: $middlewidth;
+      background-color: #dee5ed;
+
+      .top {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: #ecf1f6;
+        height: $topheight;
+
+        h3 {
+          margin: 40px 0px;
+        }
+      }
+
+      .middleSection {
+        display: flex;
+        flex-direction: column;
+        height: 63.3vh;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+
+        .singleMessage {
+          margin: 5px 20px;
+          display: flex;
+          flex-direction: column;
+
+          p {
+            width: fit-content;
+            text-align: justify;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            color: white;
+          }
+        }
+      }
+
+      .bottomSection {
+        background-color: #a0a0a0;
+        height: 8.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $middlewidth;
+        .text {
+          width: 47vw;
+          height: 5vh;
+          margin: 0px 5px;
+        }
+
+        button {
+          width: 40px;
+          height: 5vh;
+          margin: 0px 5px;
+        }
+      }
+    }
+
+    .rightSide {
+      width: $leftrightwidth;
+      background-color: lightgrey;
+      height: 85vh;
+
+      .topSide {
+        background: #7b83ae;
+        height: $topheight;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          font-size: 50px;
+        }
+
+        h4 {
+          margin-left: 10px;
+        }
+      }
+
+      .middleSection {
+        background-color: #eff3f7;
+        height: $middleheight;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: hidden;
+        overflow-y: auto;
+
+        h5 {
+          align-self: center;
+          margin: 20px 0px;
+        }
+
+        .user {
+          display: flex;
+          align-items: center;
+          padding-left: 40px;
+          height: 5vh;
+          margin: 10px 0px;
+
+          &:hover {
+            background-color: rgba(50, 115, 220, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          .stat {
+            margin-bottom: 10px;
+            margin-right: 1vw;
+          }
+
+          .icon {
+            font-size: 30px;
+          }
+
+          h6 {
+            margin-left: 10px;
+            flex-grow: 1;
+          }
+        }
+      }
+
+      .bottomSection {
+        text-align: center;
+        .search {
+          width: 15vw;
+        }
+      }
+    }
+  }
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 7px;
+  margin-left: 10px !important;
+  background-color: #58b666;
+}
+
+.red {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 7px;
+  margin-left: 10px !important;
+  background-color: #ff725d;
+}
+
+@media only screen and (max-width: 1090px) {
+  .topSide {
+    .icon {
+      display: none;
+    }
+    h4 {
+      font-size: 20px;
+    }
+  }
+}
+
+.rightone {
+  align-items: flex-end;
+}
+
+.leftone {
+  align-items: flex-start;
+}
+
+.active {
+  background-color: rgba(50, 115, 220, 0.3);
+}
+
+@media only screen and (max-width: 705px) {
+  .user {
+    padding: 0px !important;
+    .icon {
+      display: none;
+    }
+  }
+  .rightSide {
+    display: none;
+  }
+  .text {
+    width: 35vw !important;
+  }
+}
+
+@media only screen and (max-width: 1320px) {
+  .letter {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .top {
+    h3 {
+      font-size: 20px;
+      padding-top: 20px !important;
+      margin: 0 !important;
+    }
+  }
+  .page {
+    height: 150vh !important;
+    width: 150vw !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .page {
+    height: 120vh;
+    width: 120vw;
+  }
+}
+
+@media only screen and (max-width: 100px) {
+  .page {
+    height: 110vh;
+    width: 110vw;
+  }
+}
+

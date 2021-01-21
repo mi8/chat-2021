@@ -1,0 +1,247 @@
+$point: #282828;
+$point-light: lighten($point, 5%);
+
+$ratio: 1.618;
+$card_width: 320px;
+$card_height: $card_width * $ratio;
+$card_padding: 20px;
+$card-bgcolor: white;
+$card_margin: 5px;
+$card_round: 10px;
+$card-shadow: -20px -20px 0px 0px $point-light;
+
+$card-padding-basis: 15px;
+$card_head_padding: 0px 0px $card-padding-basis 0px;
+
+.mega {
+  background-image: url(../../../../../assets/backgroundblack.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 10px;
+}
+
+.animation {
+  animation-name: opaci;
+  animation-duration: 1s;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 5em;
+  justify-items: center;
+  margin-top: 4%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: stretch;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.card {
+  width: $card_width;
+  height: 730px;
+  transition: box-shadow 0.2s;
+  text-align: center;
+  border: none;
+  padding: $card_padding;
+  margin: $card_margin;
+  -webkit-box-shadow: $card-shadow;
+  box-shadow: $card-shadow;
+  border-radius: $card_round;
+  -webkit-animation-name: shadow-show;
+  -webkit-animation-duration: 2s;
+  animation-name: shadow-show;
+  animation-duration: 2s;
+  -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+  -o-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+  transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+
+  @media only screen and (max-width: 760px) {
+    min-height: 0;
+  }
+
+  h4 {
+    padding: 2%;
+    font-size: 20px;
+  }
+  h1,
+  h2,
+  h3,
+  h5 {
+    padding: $card_head_padding;
+    font-size: 30px;
+    color: $point;
+  }
+
+  hr {
+    display: block;
+    border: none;
+    height: 3px;
+    background-color: $point;
+    margin: 0px;
+
+    -webkit-animation-name: line-show;
+    -webkit-animation-duration: 1s;
+    animation-name: line-show;
+    animation-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+    -o-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+    transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
+  }
+
+  p {
+    margin: $card-padding-basis 0px 0px 0px;
+    font-weight: 100;
+    line-height: 1.25;
+    font-size: 16px;
+    word-wrap: pre-wrap;
+    color: $point;
+    min-height: 370px;
+
+    -webkit-animation-name: p-show;
+    -webkit-animation-duration: 2s;
+    animation-name: p-show;
+    animation-duration: 2s;
+
+    @media only screen and (max-width: 760px) {
+      min-height: 0;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px -20px 0px 0px $point-light;
+  }
+}
+
+.special {
+  cursor: pointer;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: -20px -20px 0px 0px $point-light !important;
+  }
+}
+
+.flex {
+  color: white;
+  display: flex;
+  margin: 3%;
+  margin-bottom: 10px;
+}
+
+.smalltitle {
+  font-size: 20px;
+}
+.megatitle {
+  position: relative;
+  margin: auto;
+  right: 50px;
+  text-transform: uppercase;
+}
+
+.line {
+  display: block;
+  border: none;
+  height: 5px;
+  background-color: white;
+  margin: 30px 40px;
+
+  -webkit-animation-name: line-show2;
+  -webkit-animation-duration: 1s;
+  animation-name: line-show2;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes line-show {
+  from {
+    margin: 0px 100px;
+  }
+  to {
+    margin: 0px;
+  }
+}
+
+@keyframes line-show {
+  from {
+    margin: 0px 100px;
+  }
+  to {
+    margin: 0px;
+  }
+}
+
+@-webkit-keyframes line-show2 {
+  from {
+    margin: 0px 600px;
+  }
+  to {
+    margin: 30px 40px;
+  }
+}
+
+@keyframes line-show2 {
+  from {
+    margin: 0px 600px;
+  }
+  to {
+    margin: 30px 40px;
+  }
+}
+
+@-webkit-keyframes p-show {
+  from {
+    color: white;
+  }
+  to {
+    color: $point;
+  }
+}
+
+@keyframes p-show {
+  from {
+    color: white;
+  }
+  to {
+    color: $point;
+  }
+}
+
+@-webkit-keyframes shadow-show {
+  from {
+    -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
+    box-shadow: 0px 0px 0px 0px #e0e0e0;
+  }
+  to {
+    -webkit-box-shadow: $card-shadow;
+    box-shadow: $card-shadow;
+  }
+}
+
+@keyframes shadow-show {
+  from {
+    -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
+    box-shadow: 0px 0px 0px 0px #e0e0e0;
+  }
+  to {
+    -webkit-box-shadow: $card-shadow;
+    box-shadow: $card-shadow;
+  }
+}
+
+@keyframes opaci {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

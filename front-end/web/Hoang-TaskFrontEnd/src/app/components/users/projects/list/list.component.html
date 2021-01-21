@@ -1,0 +1,60 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+
+<ng-container *ngIf="projects && loading == false">
+  <div *ngIf="projects.length == 0 && loading == false" class="form">
+    <mdb-card>
+      <mdb-card-header class="info-color white-text text-center py-4">
+        <h5>
+          <strong>No Project !</strong>
+        </h5>
+      </mdb-card-header>
+
+      <mdb-card-body class="px-lg-5 pt-0 errorBody">
+        <h3 style="padding: 20px">Nothing to do ! (for now)</h3>
+        <h4 style="padding: 20px">There are no projects at the moment</h4>
+        <img class="errorimg" src="../../../assets/thumbup.png" />
+        <button
+          style="margin-top: 30px"
+          type="button"
+          mdbBtn
+          mdbWavesEffect
+          color="primary"
+          routerLink="/profile"
+        >
+          <a class="nav-link waves-light" style="color: white" mdbWavesEffect
+            >Go Back<span class="sr-only">(current)</span></a
+          >
+        </button>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="projects && loading == false">
+  <div class="total" *ngIf="projects.length > 0">
+    <div class="left">
+      <div class="header">
+        <h2 class="title">Projects</h2>
+        <div class="project" *ngFor="let el of projects; let index = index">
+          <p class="projectitle" [routerLink]="[el.id]">{{ el.title }}</p>
+          <div class="dropdown">
+            <p>{{ el.description }}</p>
+            <p>Tasks: {{ el.tasks.length }}</p>
+            <p>Completed : {{ this.completedTasks[index].length }}</p>
+            <p>Not assigned : {{ this.notAssignedTasks[index].length }}</p>
+          </div>
+        </div>
+      </div>
+      <ion-button style="margin-top: 40%" fill="outline" expand="block">
+        <lottie-player
+          slot="end"
+          autoplay
+          loop
+          src="../../../../../assets/manwithphone.json"
+        >
+        </lottie-player>
+      </ion-button>
+    </div>
+    <div class="right"></div>
+  </div>
+</ng-container>

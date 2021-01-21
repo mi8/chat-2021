@@ -1,0 +1,154 @@
+<app-spinner *ngIf="loading != false || !registerForm"></app-spinner>
+
+<div *ngIf="registerForm" class="box">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="sendData(registerForm.value)"
+    class="text-center"
+    style="color: #757575"
+    class="form"
+  >
+    <h3 style="text-align: center; margin-top: 5vh; color: white">Profile</h3>
+    <div class="inputs">
+      <div class="col">
+        <div class="md-form">
+          <input
+            type="text"
+            id="materialRegisterFormFirstName"
+            class="form-control"
+            mdbInput
+            formControlName="firstName"
+          />
+          <label for="materialRegisterFormFirstName">First name</label>
+          <em
+            *ngIf="
+              registerForm.get('firstName').hasError('required') &&
+              registerForm.get('firstName').touched
+            "
+            >Required</em
+          >
+        </div>
+        <div class="md-form">
+          <input
+            type="email"
+            id="materialRegisterFormLastName"
+            class="form-control"
+            mdbInput
+            formControlName="lastName"
+          />
+          <label for="materialRegisterFormLastName">Last name</label>
+          <em
+            *ngIf="
+              registerForm.get('lastName').hasError('required') &&
+              registerForm.get('lastName').touched
+            "
+            >Required</em
+          >
+        </div>
+        <div class="md-form mt-3">
+          <input
+            type="text"
+            id="materialSubscriptionFormUsername"
+            class="form-control"
+            mdbInput
+            formControlName="username"
+          />
+          <label for="materialSubscriptionFormUsername">UserName</label>
+          <em
+            *ngIf="
+              registerForm.get('username').hasError('required') &&
+              registerForm.get('username').touched
+            "
+            >Required</em
+          >
+        </div>
+
+        <div class="md-form">
+          <input
+            type="number"
+            id="materialRegisterFormPhone"
+            class="form-control"
+            aria-describedby="materialRegisterFormPhoneHelpBlock"
+            mdbInput
+            formControlName="number"
+          />
+          <label for="materialRegisterFormPhone">Phone number</label>
+          <em
+            *ngIf="
+              registerForm.get('number').hasError('required') &&
+              registerForm.get('number').touched
+            "
+            >Required</em
+          >
+        </div>
+
+        <div class="md-form mt-3">
+          <input
+            type="text"
+            id="materialSubscriptionFormCity"
+            class="form-control"
+            mdbInput
+            formControlName="city"
+          />
+          <label for="materialSubscriptionFormCity">City</label>
+          <em
+            *ngIf="
+              registerForm.get('city').hasError('required') &&
+              registerForm.get('city').touched
+            "
+            >Required</em
+          >
+        </div>
+
+        <div class="md-form mt-3">
+          <input
+            type="text"
+            id="materialSubscriptionFormCountryCity"
+            class="form-control"
+            mdbInput
+            formControlName="country"
+          />
+          <label for="materialSubscriptionFormCountryCity">Country</label>
+          <em
+            *ngIf="
+              registerForm.get('country').hasError('required') &&
+              registerForm.get('country').touched
+            "
+            >Required</em
+          >
+        </div>
+
+        <div class="md-form mt-3">
+          <input
+            type="text"
+            id="materialSubscriptionFormHobby"
+            class="form-control"
+            mdbInput
+            formControlName="hobby"
+          />
+          <label for="materialSubscriptionFormHobby">Hobby</label>
+          <em
+            *ngIf="
+              registerForm.get('hobby').hasError('required') &&
+              registerForm.get('hobby').touched
+            "
+            >Required</em
+          >
+        </div>
+        <em *ngIf="message">{{ message }}</em>
+      </div>
+    </div>
+    <button
+      [ngClass]="{ invalid: registerForm.invalid }"
+      [disabled]="registerForm.invalid"
+      type="submit"
+      class="animated"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Update
+    </button>
+  </form>
+</div>

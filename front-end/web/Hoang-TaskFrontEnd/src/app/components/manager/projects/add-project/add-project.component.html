@@ -1,0 +1,79 @@
+<div class="form">
+    <mdb-card class="data">
+      <mdb-card-header class=" white-text text-center py-4">
+        <h5>
+          <strong>Add Project</strong>
+        </h5>
+      </mdb-card-header>
+
+      <mdb-card-body class="px-lg-5 pt-0">
+        <form
+          [formGroup]="AddProject"
+          (ngSubmit)="sendProject(AddProject.value)"
+          class="text-center"
+          style="color: #757575"
+        >
+          <div class="md-form">
+            <input
+              type="email"
+              id="materialLoginFormEmail"
+              class="form-control"
+              mdbInput
+              formControlName="title"
+            />
+            <label for="materialLoginFormEmail">Title</label>
+          </div>
+          <em
+            *ngIf="
+              AddProject.get('title').hasError('required') &&
+              AddProject.get('title').touched
+            "
+            >Required</em
+          >
+          <em
+            *ngIf="
+              AddProject.get('title').hasError('maxlength') &&
+              AddProject.get('title').touched
+            "
+            >Too Long !
+          </em>
+          <div class="md-form">
+            <textarea
+              type="text"
+              id="form7"
+              class="md-textarea md-textarea-auto form-control"
+              mdbInput
+              formControlName="description"
+            ></textarea>
+            <label for="form7">Description</label>
+          </div>
+          <em
+            *ngIf="
+              AddProject.get('description').hasError('required') &&
+              AddProject.get('description').touched
+            "
+            >Required</em
+          >
+          <em
+          *ngIf="
+            AddProject.get('description').hasError('maxlength') &&
+            AddProject.get('description').touched
+          "
+          >Too Long !</em
+        >
+
+          <button
+            mdbBtn
+            type="button"
+            color="info"
+            rounded="true"
+            mdbWavesEffect
+            type="submit"
+            [disabled]="AddProject.invalid || clicked"
+          >
+            Add Project
+          </button>
+        </form>
+      </mdb-card-body>
+    </mdb-card>
+</div>

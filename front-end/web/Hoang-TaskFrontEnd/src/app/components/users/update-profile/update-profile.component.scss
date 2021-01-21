@@ -1,0 +1,149 @@
+.box {
+  background: linear-gradient(#141e30, #243b55);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  animation: appearing 1s;
+  animation-fill-mode: both;
+  animation-delay: 0.2s;
+
+  .form {
+    border-radius: 10px;
+    width: 600px;
+    min-height: 80vh;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0px 30px;
+
+    input {
+      color: white;
+    }
+
+    label {
+      color: #03e9f4;
+    }
+    button {
+      margin: 20px 50px;
+    }
+  }
+}
+
+.invalid {
+  color: grey !important;
+}
+
+.animated {
+  width: 130px;
+  outline: none;
+  background-color: transparent;
+  color: #0dc8f4;
+  text-transform: uppercase;
+  padding: 10px;
+  letter-spacing: 3px;
+  border: none;
+  transition: 0.5s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+      0 0 100px #03e9f4;
+  }
+
+  span {
+    position: absolute;
+
+    &:nth-child(1) {
+      background: linear-gradient(90deg, transparent, #03e9f4);
+      width: 100%;
+      height: 3px;
+      top: -1px;
+      left: 0px;
+      animation: anim1 1s linear infinite;
+    }
+
+    &:nth-child(2) {
+      background: linear-gradient(180deg, transparent, #03e9f4);
+      width: 4px;
+      height: 200%;
+      bottom: 40px;
+      left: 128px;
+      animation: anim2 1s linear infinite;
+      animation-delay: 0.25s;
+    }
+
+    &:nth-child(3) {
+      background: linear-gradient(270deg, transparent, #03e9f4);
+      width: 150%;
+      height: 3px;
+      top: 42px;
+      left: 130px;
+      animation: anim3 1s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    &:nth-child(4) {
+      background: linear-gradient(360deg, transparent, #03e9f4);
+      width: 3px;
+      height: 200%;
+      left: -1px;
+      top: 50px;
+      animation: anim4 1s linear infinite;
+      animation-delay: 0.75s;
+    }
+  }
+}
+
+@keyframes anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 150%;
+  }
+}
+
+@keyframes anim2 {
+  0% {
+    bottom: 100%;
+  }
+  50%,
+  100% {
+    bottom: -200%;
+  }
+}
+
+@keyframes anim3 {
+  0% {
+    left: 100%;
+  }
+  50%,
+  100% {
+    left: -150%;
+  }
+}
+
+@keyframes anim4 {
+  0% {
+    top: 100%;
+  }
+  50%,
+  100% {
+    top: -200%;
+  }
+}
+
+@keyframes appearing {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

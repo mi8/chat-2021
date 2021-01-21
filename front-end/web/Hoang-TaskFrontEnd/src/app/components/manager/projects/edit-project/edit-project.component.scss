@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../../../../assets/projectbackgroud.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: maxsize 0.8s;
+  animation-fill-mode: both;
+}
+
+.data {
+  background: linear-gradient(#141e30, #243b55);
+  width: 600px;
+  border-radius: 10px;
+
+  button {
+    width: 100%;
+    margin: 50px 0px 30px 0px;
+  }
+
+  .form-control {
+    color: white;
+  }
+
+  label {
+    color: #03e9f4;
+  }
+}
+
+@keyframes maxsize {
+  from {
+    min-height: 0;
+  }
+  to {
+    min-height: 100vh;
+  }
+}

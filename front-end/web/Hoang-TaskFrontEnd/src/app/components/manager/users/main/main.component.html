@@ -1,0 +1,62 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+<div class="height">
+  <div class="up">
+    <div *ngIf="id" class="table-wrapper">
+      <table class="fl-table">
+        <thead>
+          <tr>
+            <th class="id" scope="col">ID</th>
+            <th scope="col">Firstname</th>
+            <th class="lastName" scope="col">Lastname</th>
+            <th scope="col">Username</th>
+            <th class="hobby" scope="col">Hobby</th>
+            <th class="country" scope="col">Country</th>
+            <th class="city" scope="col">City</th>
+            <th class="number" scope="col">Tasks</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [ngClass]="{ admin: el.role == 'Admin' }" *ngFor="let el of data">
+            <td class="id" scope="row">{{ el.id }}</td>
+            <td>{{ el.firstName }}</td>
+            <td class="lastName">{{ el.lastName }}</td>
+            <td>{{ el.username }}</td>
+            <td class="hobby">{{ el.hobby }}</td>
+            <td class="country">{{ el.country }}</td>
+            <td class="city">{{ el.city }}</td>
+            <td class="number">{{ el.tasks.length }}</td>
+            <td>
+              <mdb-icon
+                *ngIf="el.role != 'Admin'"
+                (click)="UserDetail(el)"
+                fas
+                size="lg"
+                icon="caret-square-right"
+              ></mdb-icon>
+              <span style="font-weight: bold" *ngIf="el.role == 'Admin'"
+                >Admin</span
+              >
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody></tbody>
+      </table>
+      <div *ngIf="id && loading == false" style="text-align: center">
+        <button
+          class="special"
+          mdbBtn
+          type="button"
+          color="deep-purple"
+          rounded="true"
+          mdbWavesEffect
+          routerLink="charts"
+        >
+          Check Data
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="down"></div>
+</div>

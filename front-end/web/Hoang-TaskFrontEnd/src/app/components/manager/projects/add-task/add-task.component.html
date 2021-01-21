@@ -1,0 +1,56 @@
+
+<div class="box">
+  <form
+    [formGroup]="AddTask"
+    (ngSubmit)="sendTask(AddTask.value)"
+    style="color: #757575"
+    class="form"
+  >
+    <h3 style="text-align: center; margin-top: 5vh; color: white">Add Task</h3>
+    <div class="inputs">
+      <div class="col">
+        <div class="md-form">
+          <input
+            type="email"
+            id="materialLoginFormEmail"
+            class="form-control"
+            mdbInput
+            formControlName="description"
+          />
+          <label for="materialLoginFormEmail">Task</label>
+        </div>
+        <em
+          *ngIf="
+            AddTask.get('description').hasError('required') &&
+            AddTask.get('description').touched
+          "
+          >Required</em
+        >
+        <em
+          *ngIf="
+            AddTask.get('description').hasError('maxlength') &&
+            AddTask.get('description').touched
+          "
+          >Too Long !
+        </em>
+        <div class="d-flex justify-content-around">
+          <div>
+            <mdb-checkbox formControlName="importance">Important</mdb-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      [ngClass]="{ invalid: AddTask.invalid }"
+      [disabled]="AddTask.invalid || clicked"
+      type="submit"
+      class="animated"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Add
+    </button>
+  </form>
+</div>

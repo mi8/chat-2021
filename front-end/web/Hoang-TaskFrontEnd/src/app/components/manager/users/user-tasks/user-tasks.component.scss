@@ -1,0 +1,96 @@
+$screen-lg-min: 900px;
+
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  min-height: 500px;
+  &::selection{
+    outline:none;
+  }
+  .board-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+    .board-columns {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      @include lg {
+        flex-direction: column;
+        align-items: center;
+      }
+      .board-column {
+        //   force column to be the same size no matter the content
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-direction: column;
+        // Prevent them from being squashed //
+        min-width: 100px;
+        max-width: 250px;
+        margin: 50px;
+        padding: 25px;
+        background: rgba(white, 0.5);
+        border-radius: 4px;
+        @include lg {
+        min-width: 53%;
+        }
+        &:not(:first-child) {
+          margin-left: 0;
+          @include lg {
+            margin-left: 50px;
+          }
+        }
+        .column-title {
+          font-size: 20px;
+          font-weight: 800;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.important {
+  color: red;
+}
+
+.tasks-container {
+  flex-grow: 1;
+  min-height: 300px;
+  @include lg {
+    min-width: 200px;
+  }
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 12px;
+  background-color: white;
+  border-bottom: solid 1px #ddd;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05),
+    0 3px 14px 2px rgba(0, 0, 0, 0.05);
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  cursor: default;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,58 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+<div class="contain">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">Welcome Back</h2>
+      <h4 class="animation a2">
+        Log in to your account using email and password
+      </h4>
+    </div>
+    <!-- (ngSubmit)="sendData(signInForm.value)" -->
+    <form [formGroup]="signInForm" (ngSubmit)="AzureLogin()" class="form">
+      <!-- <input
+        type="text"
+        class="form-field animation a3"
+        placeholder="Username"
+        type="text"
+        formControlName="username"
+      />
+      <em
+        *ngIf="
+          signInForm.get('username').hasError('required') &&
+          signInForm.get('username').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a4"
+        placeholder="Password"
+        type="password"
+        formControlName="password"
+      />
+      <em
+        *ngIf="
+          signInForm.get('password').hasError('required') &&
+          signInForm.get('password').touched
+        "
+        >Required</em
+      >
+      <em *ngIf="message">{{ message }}</em> -->
+      <!-- [disabled]="signInForm.invalid" -->
+      <!-- [ngClass]="{ invalid: !signInForm.invalid }" -->
+
+      <em *ngIf="message"> {{ message }}</em>
+      <button
+        type="submit"
+        style="margin-top: 25px; color: white"
+        class="animation a6"
+      >
+        LOGIN
+      </button>
+      <p style="margin: 20px" class="animation a6">
+        Not Registered ?
+        <a style="color: blue" routerLink="/register">Register</a>
+      </p>
+    </form>
+  </div>
+  <div class="right"></div>
+</div>

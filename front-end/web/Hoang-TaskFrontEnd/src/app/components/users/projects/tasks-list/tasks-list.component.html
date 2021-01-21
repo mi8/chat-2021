@@ -1,0 +1,127 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+
+<div class="total" *ngIf="project && loading == false">
+  <div class="rows" *ngIf="project.tasks.length > 0">
+    <div class="singlerow">
+      <div class="left">
+        <h3 class="pendingtitle">Pending Tasks</h3>
+        <ul>
+          <li class="list none" *ngIf="PendingTasks.length == 0">None</li>
+          <li class="list pending" *ngFor="let el of PendingTasks">
+            <span class="desc">{{ el.description }} </span>
+            <span class="username">{{ el.user || "Not Assigned" }}</span>
+            <div class="last">
+              <span *ngIf="object.unique_name == el.userId">
+                <button (click)="removeTask(el)">
+                  <mdb-icon fas icon="user-slash"></mdb-icon></button
+              ></span>
+              <span *ngIf="object.unique_name != el.userId && el.userId != 0">
+                Assigned</span
+              >
+              <span *ngIf="el.userId == 0">
+                <button (click)="assignTask(el)">
+                  <mdb-icon fas icon="plus"></mdb-icon></button
+              ></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ion-button class="anim" fill="outline" expand="block">
+        <lottie-player
+          slot="end"
+          autoplay
+          loop
+          src="../../../../../assets/study.json"
+        >
+        </lottie-player>
+      </ion-button>
+    </div>
+
+    <div class="singlerow">
+      <div class="left">
+        <h3 class="workingtitle">Working Tasks</h3>
+        <ul>
+          <li class="list none" *ngIf="WorkingTasks.length == 0">None</li>
+          <li class="list working" *ngFor="let el of WorkingTasks">
+            <span class="desc">{{ el.description }} </span>
+            <span class="username">{{ el.user || "Not Assigned" }}</span>
+            <div class="last"></div>
+          </li>
+        </ul>
+      </div>
+      <ion-button class="anim2" fill="outline" expand="block">
+        <lottie-player
+          slot="end"
+          autoplay
+          loop
+          src="../../../../../assets/programming.json"
+        >
+        </lottie-player>
+      </ion-button>
+    </div>
+
+    <div class="singlerow">
+      <div class="left">
+        <h3 class="reviewtitle">Reviewing Tasks</h3>
+        <ul>
+          <li class="list none" *ngIf="ReviewingTasks.length == 0">None</li>
+          <li class="list review" *ngFor="let el of ReviewingTasks">
+            <span class="desc">{{ el.description }} </span>
+            <span class="username">{{ el.user || "Not Assigned" }}</span>
+            <div class="last"></div>
+          </li>
+        </ul>
+      </div>
+      <ion-button class="anim3" fill="outline" expand="block">
+        <lottie-player
+          slot="end"
+          autoplay
+          loop
+          src="../../../../../assets/review.json"
+        >
+        </lottie-player>
+      </ion-button>
+    </div>
+
+    <div class="singlerow">
+      <div class="left">
+        <h3 class="completetitle">Completed Tasks</h3>
+        <ul>
+          <li class="list none" *ngIf="CompletedTasks.length == 0">None</li>
+          <li class="list complete" *ngFor="let el of CompletedTasks">
+            <span class="desc">{{ el.description }} </span>
+            <span class="username">{{ el.user || "Not Assigned" }}</span>
+            <div class="last"></div>
+          </li>
+        </ul>
+      </div>
+      <ion-button class="anim4" fill="outline" expand="block">
+        <lottie-player
+          slot="end"
+          autoplay
+          loop
+          src="../../../../../assets/complete.json"
+        >
+        </lottie-player>
+      </ion-button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="project" class="nothing">
+  <section *ngIf="project.tasks.length == 0" style="text-align: center">
+    <div class="face">
+      <div class="band">
+        <div class="red"></div>
+        <div class="white"></div>
+        <div class="blue"></div>
+      </div>
+      <div class="eyes"></div>
+      <div class="dimples"></div>
+      <div class="mouth"></div>
+    </div>
+
+    <h1>Oops! No tasks(yet) for this project ! Wait a little bit</h1>
+    <div (click)="goHome()" class="buttonwa">Return to Home</div>
+  </section>
+</div>

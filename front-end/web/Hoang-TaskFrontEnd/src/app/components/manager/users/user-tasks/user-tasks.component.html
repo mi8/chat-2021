@@ -1,0 +1,132 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+<div *ngIf="Tasks?.length == 0 && loading == false" class="form">
+  <mdb-card>
+    <mdb-card-header class="info-color white-text text-center py-4">
+      <h5>
+        <strong>No Task !</strong>
+      </h5>
+    </mdb-card-header>
+
+    <mdb-card-body class="px-lg-5 pt-0 errorBody">
+      <h3 style="padding: 20px">Nothing to do ! (for now)</h3>
+      <h4 style="padding: 20px">
+        Either you finished everything or you don't have anything to do yet !
+      </h4>
+      <img class="errorimg" src="../../../assets/thumbup.png" />
+      <button
+        style="margin-top: 30px"
+        type="button"
+        mdbBtn
+        mdbWavesEffect
+        color="primary"
+        routerLink="/tasks/add"
+      >
+        <a class="nav-link waves-light" style="color: white" mdbWavesEffect
+          >Check Projects<span class="sr-only">(current)</span></a
+        >
+      </button>
+    </mdb-card-body>
+  </mdb-card>
+</div>
+<ng-container *ngIf="Tasks">
+  <ng-container *ngIf="Tasks.length != 0 && loading == false">
+    <div class="board">
+      <div class="board-wrapper">
+        <div class="board-columns" cdkDropListGroup>
+          <div class="board-column">
+            <div class="column-title">Pending</div>
+            <div
+              class="tasks-container"
+              cdkDropList
+              id="Pending"
+              [cdkDropListData]="PendingTasks"
+            >
+              <div
+                [ngClass]="{ important: item.importance }"
+                class="task"
+                *ngFor="let item of PendingTasks"
+                cdkDrag
+                [cdkDragData]="item"
+                [cdkDragDisabled]="true"
+              >
+                <p style="flex-grow: 1; margin: 0; padding: 0">
+                  {{ item.description }}
+                </p>
+                <button><mdb-icon fas icon="ellipsis-h"></mdb-icon></button>
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">Working</div>
+            <div
+              class="tasks-container"
+              cdkDropList
+              id="Working"
+              [cdkDropListData]="WorkingTasks"
+            >
+              <div
+                [ngClass]="{ important: item.importance }"
+                class="task"
+                *ngFor="let item of WorkingTasks"
+                cdkDrag
+                [cdkDragData]="item"
+                [cdkDragDisabled]="true"
+              >
+                <p style="flex-grow: 1; margin: 0; padding: 0">
+                  {{ item.description }}
+                </p>
+                <button><mdb-icon fas icon="edit"></mdb-icon></button>
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">Reviewing</div>
+            <div
+              class="tasks-container"
+              cdkDropList
+              id="Reviewing"
+              [cdkDropListData]="ReviewingTasks"
+            >
+              <div
+                [ngClass]="{ important: item.importance }"
+                class="task"
+                *ngFor="let item of ReviewingTasks"
+                cdkDrag
+                [cdkDragData]="item"
+                [cdkDragDisabled]="true"
+              >
+                <p style="flex-grow: 1; margin: 0; padding: 0">
+                  {{ item.description }}
+                </p>
+                <button><mdb-icon fas icon="search"></mdb-icon></button>
+              </div>
+            </div>
+          </div>
+          <div class="board-column">
+            <div class="column-title">Completed</div>
+            <div
+              class="tasks-container"
+              cdkDropList
+              id="Complete"
+              [cdkDropListData]="CompletedTasks"
+            >
+              <div
+                [ngClass]="{ important: item.importance }"
+                class="task"
+                *ngFor="let item of CompletedTasks"
+                cdkDrag
+                [cdkDragData]="item"
+                [cdkDragDisabled]="true"
+              >
+                <p style="flex-grow: 1; margin: 0; padding: 0">
+                  {{ item.description }}
+                </p>
+                <button><mdb-icon fas icon="check-double"></mdb-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,64 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+
+<div class="box">
+  <form
+    [formGroup]="assignUser"
+    (ngSubmit)="assign(assignUser.value)"
+    style="color: #757575"
+    class="form"
+  >
+    <h3 style="text-align: center; margin-top: 5vh; color: white">
+      Assign User
+    </h3>
+    <div class="inputs">
+      <div class="col">
+        <div class="md-form">
+          <input
+            type="email"
+            id="materialLoginFormEmail"
+            class="form-control finduser"
+            mdbInput
+            formControlName="user"
+            (keyup)="searchUser()"
+            (focus)="display = true"
+            (blur)="display = false"
+          />
+          <label for="materialLoginFormEmail">User</label>
+        </div>
+        <em
+          *ngIf="
+            assignUser.get('user').hasError('required') &&
+            assignUser.get('user').touched
+          "
+          style="padding-bottom: 10px"
+          >Required</em
+        >
+        <em style="padding-bottom: 10px" *ngIf="error">User incorrect</em>
+        <div class="d-flex justify-content-around"></div>
+      </div>
+      <div class="bob" *ngIf="display">
+        <ul *ngIf="filteredList" class="list-group">
+          <li
+            *ngFor="let el of filteredList"
+            class="list-group-item waves-light"
+            (mousedown)="select(el)"
+          >
+            {{ el.username | lowercase | titlecase }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      [ngClass]="{ invalid: assignUser.invalid }"
+      [disabled]="assignUser.invalid || clicked"
+      type="submit"
+      class="animated"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Assign
+    </button>
+  </form>
+</div>

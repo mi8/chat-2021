@@ -1,0 +1,341 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+
+<div *ngIf="form" class="total">
+  <div class="inside">
+    <div class="leftside">
+      <div class="anim">
+        <img
+          src="https://img.icons8.com/bubbles/100/000000/user.png"
+          class="img a1"
+          alt="User-Profile-Image"
+        />
+        <h4 class="a2">{{ originalFirstName }} {{ originalLastName }}</h4>
+        <h4 class="a3">Tasks : {{ form.get("tasks").value.length }}</h4>
+        <button
+          class="a4"
+          style="width: 100%"
+          mdbBtn
+          type="button"
+          color="secondary"
+          mdbWavesEffect
+          [routerLink]="['/chart', object.unique_name]"
+        >
+          Check Chart
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="rightside">
+        <div class="top">
+          <h3>Profile</h3>
+          <hr />
+          <form [formGroup]="form" class="information">
+            <div class="leftinfo">
+              <!--First Name-->
+              <div class="list-group-item bob waves-light">
+                <mdb-icon
+                  style="margin-right: 10px"
+                  fas
+                  icon="user-circle"
+                ></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.firstName">
+                  First Name:
+                  <strong>{{ form.get("firstName").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.firstName" class="md-form left">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="form1"
+                    class="form-control"
+                    formControlName="firstName"
+                  />
+                  <label for="form1" class="">First Name</label>
+                  <em
+                    *ngIf="
+                      form.get('firstName').hasError('required') &&
+                      form.get('firstName').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.firstName"
+                  (click)="propertyEditable.firstName = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.firstName"
+                  (click)="sendData('firstName')"
+                  type="submit"
+                  [disabled]="form.get('firstName').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+              <!-- Last Name -->
+              <div class="list-group-item bob waves-light">
+                <mdb-icon
+                  style="margin-right: 10px"
+                  fas
+                  icon="user-alt"
+                ></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.lastName">
+                  Last Name: <strong>{{ form.get("lastName").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.lastName" class="md-form left">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="form1"
+                    class="form-control"
+                    formControlName="lastName"
+                  />
+                  <label for="form1" class="">Last Name</label>
+                  <em
+                    *ngIf="
+                      form.get('lastName').hasError('required') &&
+                      form.get('lastName').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.lastName"
+                  (click)="propertyEditable.lastName = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.lastName"
+                  (click)="sendData('lastName')"
+                  type="submit"
+                  [disabled]="form.get('lastName').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+
+              <!-- User Name -->
+              <div class="list-group-item bob waves-light">
+                <mdb-icon
+                  style="margin-right: 10px"
+                  fas
+                  icon="user-edit"
+                ></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.username">
+                  Username: <strong>{{ form.get("username").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.username" class="md-form left">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="form1"
+                    class="form-control"
+                    formControlName="username"
+                  />
+                  <label for="form1" class="">Username</label>
+                  <em
+                    *ngIf="
+                      form.get('username').hasError('required') &&
+                      form.get('username').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.username"
+                  (click)="propertyEditable.username = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.username"
+                  (click)="sendData('username')"
+                  type="submit"
+                  [disabled]="form.get('username').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+            </div>
+            <div class="rightinfo">
+              <!-- Number  -->
+              <div class="list-group-item bob waves-light">
+                <mdb-icon
+                  style="margin-right: 10px"
+                  fas
+                  icon="mobile-alt"
+                ></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.number">
+                  Phone Number: <strong>{{ form.get("number").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.number" class="md-form left">
+                  <input
+                    mdbInput
+                    type="number"
+                    id="form1"
+                    class="form-control"
+                    formControlName="number"
+                  />
+                  <label for="form1" class="">number</label>
+                  <em
+                    *ngIf="
+                      form.get('number').hasError('required') &&
+                      form.get('number').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.number"
+                  (click)="propertyEditable.number = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.number"
+                  (click)="sendData('number')"
+                  type="submit"
+                  [disabled]="form.get('number').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+
+              <!-- City -->
+
+              <div class="list-group-item bob waves-light">
+                <mdb-icon style="margin-right: 10px" fas icon="city"></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.city">
+                  City: <strong>{{ form.get("city").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.city" class="md-form left">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="form1"
+                    class="form-control"
+                    formControlName="city"
+                  />
+                  <label for="form1" class="">City</label>
+                  <em
+                    *ngIf="
+                      form.get('city').hasError('required') &&
+                      form.get('city').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.city"
+                  (click)="propertyEditable.city = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.city"
+                  (click)="sendData('city')"
+                  type="submit"
+                  [disabled]="form.get('city').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+              <!-- Hobby -->
+
+              <div class="list-group-item bob waves-light">
+                <mdb-icon
+                  style="margin-right: 10px"
+                  fas
+                  icon="gamepad"
+                ></mdb-icon>
+                <span class="left" *ngIf="!propertyEditable.hobby">
+                  Hobby: <strong>{{ form.get("hobby").value }} </strong>
+                </span>
+                <div *ngIf="propertyEditable.hobby" class="md-form left">
+                  <input
+                    mdbInput
+                    type="text"
+                    id="form1"
+                    class="form-control"
+                    formControlName="hobby"
+                  />
+                  <label for="form1" class="">Hobby</label>
+                  <em
+                    *ngIf="
+                      form.get('hobby').hasError('required') &&
+                      form.get('hobby').touched
+                    "
+                    >Required</em
+                  >
+                </div>
+                <mdb-icon
+                  *ngIf="!propertyEditable.hobby"
+                  (click)="propertyEditable.hobby = true"
+                  fas
+                  icon="edit"
+                  class="icon"
+                ></mdb-icon>
+                <button
+                  *ngIf="propertyEditable.hobby"
+                  (click)="sendData('hobby')"
+                  type="submit"
+                  [disabled]="form.get('hobby').hasError('required')"
+                >
+                  <mdb-icon far icon="check-circle" class="icon"></mdb-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="bottom" style="position: relative">
+          <h3>Tasks</h3>
+          <hr />
+          <div class="tasks">
+            <p *ngFor="let el of PendingTasks" class="duty one">
+              {{ el.description }}
+            </p>
+            <p *ngFor="let el of WorkingTasks" class="duty two">
+              {{ el.description }}
+            </p>
+            <p *ngFor="let el of ReviewingTasks" class="duty three">
+              {{ el.description }}
+            </p>
+            <p *ngFor="let el of CompletedTasks" class="duty four">
+              {{ el.description }}
+            </p>
+          </div>
+        </div>
+        <footer class="footer">
+          <h3>Legend</h3>
+          <hr />
+          <div class="colors">
+            <div>
+              <p></p>
+              Pending
+            </div>
+            <div>
+              <p></p>
+              Working
+            </div>
+            <div>
+              <p></p>
+              Reviewing
+            </div>
+            <div>
+              <p></p>
+              Completed
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

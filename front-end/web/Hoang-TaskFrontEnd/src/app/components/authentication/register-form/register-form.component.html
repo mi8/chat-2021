@@ -1,0 +1,143 @@
+<app-spinner *ngIf="loading != false"></app-spinner>
+<div class="contain">
+  <div class="left"></div>
+  <div class="right">
+    <div class="header">
+      <h2 class="animation a1">Hello Stranger !</h2>
+      <h4 class="animation a2">
+        Register to be able to manage projects and tasks
+      </h4>
+    </div>
+    <!-- (ngSubmit)="sendData(registerForm.value)" -->
+    <form
+      class="form"
+      [formGroup]="registerForm"
+      (ngSubmit)="AzureRegister()"
+    >
+      <!-- <input
+        class="form-field animation a3"
+        type="text"
+        placeholder="Firstname"
+        formControlName="firstName"
+      />
+      <em
+        *ngIf="
+          registerForm.get('firstName').hasError('required') &&
+          registerForm.get('firstName').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a4"
+        type="text"
+        placeholder="LastName"
+        formControlName="lastName"
+      />
+      <em
+        *ngIf="
+          registerForm.get('lastName').hasError('required') &&
+          registerForm.get('lastName').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a5"
+        type="text"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <em
+        *ngIf="
+          registerForm.get('username').hasError('required') &&
+          registerForm.get('username').touched
+        "
+        >Required</em
+      >
+      <em
+        *ngIf="
+          registerForm.get('username').hasError('pattern') &&
+          registerForm.get('username').touched
+        "
+        >No Spaces Please !</em
+      >
+      <input
+        class="form-field animation a6"
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <em
+        *ngIf="
+          registerForm.get('password').hasError('required') &&
+          registerForm.get('password').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a7"
+        type="number"
+        placeholder="Number"
+        formControlName="number"
+      />
+      <em
+        *ngIf="
+          registerForm.get('number').hasError('required') &&
+          registerForm.get('number').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a8"
+        type="text"
+        placeholder="City"
+        formControlName="city"
+      />
+      <em
+        *ngIf="
+          registerForm.get('city').hasError('required') &&
+          registerForm.get('city').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a9"
+        type="text"
+        placeholder="Country"
+        formControlName="country"
+      />
+      <em
+        *ngIf="
+          registerForm.get('country').hasError('required') &&
+          registerForm.get('country').touched
+        "
+        >Required</em
+      >
+      <input
+        class="form-field animation a10"
+        type="text"
+        placeholder="Hobby"
+        formControlName="hobby"
+      />
+      <em
+        *ngIf="
+          registerForm.get('hobby').hasError('required') &&
+          registerForm.get('hobby').touched
+        "
+        >Required</em
+      > -->
+      <!-- [disabled]="registerForm.invalid || clicked"
+      [ngClass]="{ invalid: !registerForm.invalid }" -->
+      <button
+        class="animation a11"
+        type="submit"
+        style="margin-top: 25px; color: white"
+      >
+        REGISTER
+      </button>
+      <p class="animation a11" style="margin: 20px">
+        Registered ?
+        <a style="color: blue" routerLink="/signin">Sign in</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+.body {
+  padding-top: 55px;
+  background-color: #1d2224;
+  font-family: "Roboto", sans-serif;
+  height: 1%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+// .form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 5%;
+// }
+
+em {
+  color: red;
+  display: flex;
+}
+
+@media only screen and (max-width: 1400px) {
+  .form2 {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .form2 {
+    width: 95%;
+  }
+}
+
+.errorimg {
+  width: 25%;
+}
+
+.errorBody {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+table {
+  background-color: white;
+}

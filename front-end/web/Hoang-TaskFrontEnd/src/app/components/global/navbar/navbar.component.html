@@ -1,0 +1,131 @@
+<!--Navbar-->
+<mdb-navbar
+  class="top"
+  SideClass="navbar navbar-expand-lg navbar-dark indigo "
+  [containerInside]="false"
+>
+  <!-- Navbar brand -->
+
+  <mdb-navbar-brand
+    ><a class="navbar-brand" style="color: white; cursor: default"
+      >Board</a
+    ></mdb-navbar-brand
+  >
+
+  <!-- Collapsible content -->
+  <links>
+    <div (click)="click()" class="list" *ngIf="authenticated | async">
+      <input
+        #input
+        placeholder="Where to ?"
+        (keyup)="searchValue(input.value)"
+        (focus)="display = true"
+        (blur)="display = false"
+      />
+      <ng-container *ngIf="display">
+        <ul *ngIf="toSearch.length > 0">
+          <li class="drop"(mousedown)="select(el)" *ngFor="let el of toSearch">
+            {{ el.name }}
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="!(authenticated | async)"
+      >
+        <a class="nav-link waves-light" routerLink="signin" mdbWavesEffect
+          >Sign In<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="!(authenticated | async)"
+      >
+        <a class="nav-link waves-light" routerLink="register" mdbWavesEffect
+          >Register<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="isAdminObs | async"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link waves-light" routerLink="/projects" mdbWavesEffect
+          >Manage<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="isAdminObs | async"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link waves-light" routerLink="/users" mdbWavesEffect
+          >Users<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authenticated | async"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link waves-light" routerLink="assignTasks" mdbWavesEffect
+          >Projects<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authenticated | async"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link waves-light" routerLink="tasks" mdbWavesEffect
+          >Tasks<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authenticated | async"
+      >
+        <a class="nav-link waves-light" routerLink="profile" mdbWavesEffect
+          >Profile<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authenticated | async"
+      >
+        <a class="nav-link waves-light" routerLink="chat" mdbWavesEffect
+          >Chat<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="authenticated | async"
+      >
+        <a class="nav-link waves-light" routerLink="update" mdbWavesEffect
+          >Update<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item" *ngIf="authenticated | async">
+        <a class="nav-link waves-light" (click)="logout()" mdbWavesEffect
+          >Log Out</a
+        >
+      </li>
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+</mdb-navbar>
+
+<!--/.Navbar-->

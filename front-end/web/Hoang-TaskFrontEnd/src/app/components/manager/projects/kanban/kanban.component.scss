@@ -1,0 +1,247 @@
+.navigation {
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .titlekanban {
+    width: 145px;
+    height: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    color: #eee;
+    position: relative;
+    overflow: hidden;
+    animation: show 0.5s;
+    animation-timing-function: ease-in;
+    margin-right: 5%;
+    margin-left: 5%;
+
+    @media only screen and (max-width: 525px) {
+      height: 70px;
+      width: 200px;
+      margin: 10px;
+    }
+    span {
+      transition: 0.5s ease;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      height: 60px;
+      width: 20px;
+      top: -8px;
+      left: -60px;
+      transform: rotate(30deg);
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+      span {
+        opacity: 0;
+      }
+    }
+
+    &:after {
+      content: "Table";
+      position: absolute;
+      // bottom: 10px;
+      bottom: 100px;
+      right: 50px;
+      transition: all 0.5s;
+      opacity: 0;
+    }
+
+    &:hover:before {
+      left: 110%;
+    }
+
+    &:hover:after {
+      bottom: 10px;
+      opacity: 1;
+    }
+  }
+}
+
+.add {
+  &:after {
+    content: "Task" !important;
+    position: absolute;
+    // bottom: 10px;
+    bottom: 100px;
+    right: 55px !important;
+    transition: all 0.5s;
+    opacity: 0;
+  }
+
+  &:hover:before {
+    left: 110%;
+  }
+
+  &:hover:after {
+    bottom: 10px;
+    opacity: 1;
+  }
+}
+
+.back {
+  &:after {
+    content: "Projects" !important;
+    position: absolute;
+    // bottom: 10px;
+    bottom: 100px;
+    right: 40px !important;
+    transition: all 0.5s;
+    opacity: 0;
+  }
+
+  &:hover:before {
+    left: 110%;
+  }
+
+  &:hover:after {
+    bottom: 10px;
+    opacity: 1;
+  }
+}
+button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.important {
+  color: red;
+}
+
+.columns {
+  display: flex;
+  margin: 1%;
+  justify-content: space-around;
+  animation: showColumns 1s ease-in;
+
+  .column {
+    position: relative;
+    padding: 0.5rem 1rem;
+    flex-basis: 0;
+    flex-grow: 1;
+    // background-color: rgba(255, 255, 255, 0.5);
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 80vh;
+    border-radius: 10px;
+  }
+}
+
+.tasks {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 20px;
+  button {
+    cursor: default;
+  }
+}
+
+.pending {
+  border: 1px solid #8da5b1;
+  border-radius: 10px;
+  background: #8da5b1;
+}
+
+.working {
+  border: 1px solid #00a8ff;
+  border-radius: 10px;
+  background: #00a8ff;
+}
+
+.reviewing {
+  border: 1px solid #65d300;
+  border-radius: 10px;
+  background: #65d300;
+}
+
+.completed {
+  border: 1px solid#FFBB33;
+  border-radius: 10px;
+  background: #ffbb33;
+}
+
+.title {
+  padding: 10px 0px;
+  font-size: 20px;
+}
+
+.items {
+  background-color: #f8f8ff;
+  text-align: center;
+  margin-top: 10px;
+  padding: 15px 10px;
+  border-radius: 10px;
+  transition: transform 1s ease;
+
+  // word-break: break-all;
+  overflow-wrap: break-word;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.pendingItems {
+  border-left: 10px solid #8da5b1;
+  border-right: 10px solid #8da5b1;
+}
+
+.workingItems {
+  border-left: 10px solid #00a8ff;
+  border-right: 10px solid #00a8ff;
+}
+
+.reviewingItems {
+  border-left: 10px solid #65d300;
+  border-right: 10px solid #65d300;
+}
+
+.completedItems {
+  border-left: 10px solid #ffbb33;
+  border-right: 10px solid #ffbb33;
+  animation: enlarge 1s;
+  animation-fill-mode: both;
+  animation-delay: 2;
+  cursor: pointer;
+}
+
+.small {
+  display: block;
+  text-align: right;
+}
+
+.user {
+  font-weight: bold;
+}
+
+@keyframes showColumns {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes enlarge {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}

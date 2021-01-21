@@ -1,0 +1,277 @@
+.bob {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 300px;
+  border: none;
+  outline: none;
+  margin: 10px 0px;
+  background-color: inherit;
+}
+
+mdb-icon {
+  font-size: 25px;
+}
+.left {
+  flex-grow: 1;
+}
+
+.icon {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+  outline: none;
+}
+
+.total {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-family: "Lato", sans-serif;
+  @media only screen and (max-width: 900px) {
+    margin-top: 250px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin-top: 500px;
+  }
+}
+
+.inside {
+  min-width: 40vw;
+  min-height: 80vh;
+  display: flex;
+  border-radius: 10px;
+  animation: appear 1s;
+  animation-fill-mode: both;
+}
+
+.leftside {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(45, 87, 253, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: showId 2s;
+  animation-fill-mode: both;
+  animation-delay: 0.5s;
+  @media only screen and (max-width: 510px) {
+    display: none;
+  }
+
+  .img {
+    height: 150px;
+    width: 150px;
+  }
+
+  h4 {
+    padding: 10px;
+  }
+}
+
+.rightside {
+  display: flex;
+  flex-direction: column;
+  min-width: 50vw;
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  min-height: 80vh;
+
+  h3 {
+    margin: 40px 30px 10px 30px;
+  }
+
+  hr {
+    height: 2px;
+    margin-left: 20px;
+    width: 90%;
+    background-color: black;
+  }
+
+  .information {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @media only screen and (max-width: 910px) {
+      flex-direction: column;
+    }
+
+    .leftinfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .rightinfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .tasks {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    grid-gap: 15px;
+    justify-items: start;
+    margin-left: 20px;
+
+    .duty {
+      border-radius: 5px;
+      width: 150px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+    .one {
+      background: #8ca4b0;
+    }
+    .two {
+      background: #00a7fe;
+    }
+    .three {
+      background: #65d200;
+    }
+    .four {
+      background: #e3a832;
+      opacity: 0.5;
+    }
+  }
+}
+
+.anim {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: appear 2s;
+  animation-fill-mode: both;
+}
+
+.a1 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 1.5s;
+}
+
+.a2 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+.a3 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 2.2s;
+}
+
+.a4 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 2.3s;
+}
+
+.a5 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 2.5s;
+}
+
+.a6 {
+  animation: photo 2s;
+  animation-fill-mode: both;
+  animation-delay: 2.7s;
+}
+
+.colors {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  div {
+    padding: 10px;
+    display: flex;
+    p {
+      width: 70px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+
+  div:nth-child(1) {
+    p {
+      background-color: #8ca4b0;
+    }
+  }
+
+  div:nth-child(2) {
+    p {
+      background-color: #00a7fe;
+    }
+  }
+
+  div:nth-child(3) {
+    p {
+      background-color: #65d200;
+    }
+  }
+
+  div:nth-child(4) {
+    p {
+      background-color: rgba(#e3a832, 0.5);
+    }
+  }
+}
+
+@keyframes showId {
+  from {
+    width: 0;
+  }
+  to {
+    width: 300px;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes photo {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

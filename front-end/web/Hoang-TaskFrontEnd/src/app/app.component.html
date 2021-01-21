@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<main [@routeAnimations]="outlet.isActivated ? outlet.activatedRoute : ''">
+  <router-outlet
+    (activate)="onActivate($event)"
+    #outlet="outlet"
+  ></router-outlet>
+</main>
